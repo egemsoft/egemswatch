@@ -8,10 +8,6 @@
     "type": "git",
     "url": "git://github.com/egemsoft/egemswatch.git"
   },
-  "dependencies": {
-    "bootstrap-sass-official": "~3.2.0",
-    "bootstrap": "~3.2.0"
-  },
   "licenses": [
     {
       "type": "MIT",
@@ -25,5 +21,9 @@
     "src",
     "index.html",
     ".gitignore"
-  ]
+  ],
+  "devDependencies": {
+    "bootstrap-sass-official": "~3.2.0+2",
+    "bootstrap": "~3.2.0"
+  }
 }
