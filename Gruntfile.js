@@ -33,7 +33,7 @@ module.exports = function(grunt) {
     },
     clean: {
       build: {
-        src: ['.sass-cache', '*/build.scss']
+        src: ['.sass-cache', 'src/build.concat.scss']
       },
       dist: {
         src: ['css', 'js', 'fonts']
@@ -78,10 +78,10 @@ module.exports = function(grunt) {
     var sassSrc;
     var files = {};
     var dist = {};
-    concatSrc = '<%= appConfig.src %>/_build.scss';
-    concatDest = '<%= appConfig.src %>/build.scss';
+    concatSrc = '<%= appConfig.src %>/build.scss';
+    concatDest = '<%= appConfig.src %>/build.concat.scss';
     sassDest = '<%= appConfig.dist %>/css/bootstrap.css';
-    sassSrc = ['<%= appConfig.src %>/build.scss'];
+    sassSrc = ['<%= appConfig.src %>/build.concat.scss'];
 
     dist = {
       src: concatSrc,

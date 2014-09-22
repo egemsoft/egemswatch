@@ -150,7 +150,7 @@ $btn-default-bg:                 #fff !default;
 $btn-default-border:             #eee !default;
 
 $btn-primary-color:              #fff !default;
-$btn-primary-bg:                 $brand-primary !default;
+$btn-primary-bg:                 #4183D7 !default;
 $btn-primary-border:             hsla(0, 100%, 100%, 0) !default;
 
 $btn-success-color:              #fff !default;
@@ -351,10 +351,10 @@ $navbar-default-bg:                #fff !default;
 $navbar-default-border:            hsla(0, 100%, 100%, 0) !default;
 
 // Navbar links
-$navbar-default-link-color:                $gray !default;
-$navbar-default-link-hover-color:          $gray-dark !default;
+$navbar-default-link-color:                $egem !default;
+$navbar-default-link-hover-color:          $egem-dark !default;
 $navbar-default-link-hover-bg:             hsla(0, 100%, 100%, 0) !default;
-$navbar-default-link-active-color:         $gray-dark !default;
+$navbar-default-link-active-color:         $egem !default;
 $navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;
 $navbar-default-link-disabled-color:       #ccc !default;
 $navbar-default-link-disabled-bg:          hsla(0, 100%, 100%, 0) !default;
