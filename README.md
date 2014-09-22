@@ -5,6 +5,8 @@ Bootstrap theme based on [Paper](http://bootswatch.com/paper) by Bootswatch. Der
 
 ![egemsoft-logo](http://egemsoft.net/images/logo.png)
 
+##[Demo](https://rawgit.com/egemsoft/egemswatch/master/index.html)
+
 ##Usage
 
 Install via bower:
