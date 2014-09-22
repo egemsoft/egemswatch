@@ -17,5 +17,13 @@
       "type": "MIT",
       "url": "http://opensource.org/licenses/MIT"
     }
+  ],
+  "ignore": [
+    "**/.*",
+    "package.json",
+    "Gruntfile.js",
+    "src",
+    "index.html",
+    ".gitignore"
   ]
 }
