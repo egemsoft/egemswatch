@@ -3,6 +3,8 @@ Egemswatch
 
 Bootstrap theme based on [Paper](http://bootswatch.com/paper) by Bootswatch. Derived from sass sources in [Bootswatch-sass](https://github.com/log0ymxm/bootswatch-scss).
 
+![egemsoft-logo](http://egemsoft.net/images/logo.png)
+
 ##Usage
 
 Install via bower:
@@ -43,7 +45,7 @@ Node, npm, Bower and Grunt is required for development.
 
 ###Build
 
-Build task generates css with sass sources. Packages css, font and js files under `/dist`. Requires bootstrap and bootstrap-sass-official (installed with bower).
+Build task generates css with sass sources. Packages css, font and js files on corresponding directories. Requires bootstrap and bootstrap-sass-official (installed with bower).
 
 ```bash
  $ grunt build
