@@ -19,7 +19,7 @@ module.exports = function(grunt) {
     builddir: '.',
     appConfig: {
       src: 'src',
-      dist: 'dist'
+      dist: '.'
     },
     meta: {
       banner: '/**\n' +
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         src: ['.sass-cache', '*/build.scss']
       },
       dist: {
-        src: ['<%= appConfig.dist %>']
+        src: ['css', 'js', 'fonts']
       }
     },
     concat: {
