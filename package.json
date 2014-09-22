@@ -1,0 +1,26 @@
+{
+  "name": "egemswatch",
+  "description": "Boostrap theme based on Paper by Bootswatch.",
+  "version": "3.2.0",
+  "author": "İsmail Demirbilek",
+  "homepage": "http://egemsoft.github.io/egemswatch",
+  "license": "MIT, http://opensource.org/licenses/MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/egemsoft/egemswatch.git"
+  },
+  "engines": {
+    "node": ">= 0.8.11"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-sass": "~0.7.4",
+    "bower": "~1.0.0"
+  },
+  "dependencies": {
+    "grunt-contrib-copy": "^0.6.0"
+  }
+}
