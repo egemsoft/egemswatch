@@ -17,7 +17,7 @@
   "main": [
     "css/bootstrap.css",
     "js/bootstrap.js"
-  ]
+  ],
   "ignore": [
     "**/.*",
     "package.json",
