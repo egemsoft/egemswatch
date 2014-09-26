@@ -3,7 +3,7 @@
 # Boostrap theme based on Paper by Bootswatch.
 # @version 3.2.0 - 2014-09-22
 # @link http://egemsoft.github.io/egemswatch
-# @license Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
+# @license MIT, http://opensource.org/licenses/MIT
 #
 
 module.exports = (grunt) ->
