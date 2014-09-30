@@ -23,6 +23,14 @@ module.exports = (grunt) ->
     appConfig:
       src: 'src'
       dist: '.'
+      themes: [
+        'curious',
+        'light-sea'
+        'madison'
+        'ming'
+        'steel'
+      ]
+
 
     meta:
       banner: '/**\n' +
@@ -62,13 +70,15 @@ module.exports = (grunt) ->
           expand: true
         ]
 
-  grunt.registerTask 'build', (compress) ->
+
+  # Build single theme
+  grunt.registerTask 'build', (theme, compress) ->
     compress = true if !compress?;
     files = {}
     dist = {}
-    concatSrc = '<%= appConfig.src %>/build.scss'
+    concatSrc = ["<%= appConfig.src %>/egemswatch.#{ theme }.scss", '<%= appConfig.src %>/build.scss']
     concatDest = '<%= appConfig.src %>/build.concat.scss'
-    sassDest = '<%= appConfig.dist %>/css/bootstrap.css'
+    sassDest = "<%= appConfig.dist %>/css/egemswatch.#{ theme }.css"
     sassSrc = ['<%= appConfig.src %>/build.concat.scss']
 
     dist =
@@ -87,10 +97,13 @@ module.exports = (grunt) ->
       'clean:build'
     ]
 
-    grunt.task.run "compress: #{ sassDest }:<%= appConfig.dist %>/css/bootstrap.min.css" if compress
+    grunt.task.run "compress: #{ sassDest }:<%= appConfig.dist %>/css/egemswatch.#{ theme }.min.css" if compress
 
-    # copy js, font files
-    grunt.task.run 'copy:bootstrap'
+
+  # Build all themes registered on appConfig.themes
+  grunt.registerTask 'buildThemes', (compress) ->
+    grunt.config.get('appConfig.themes').forEach (theme) ->
+      grunt.task.run "build:#{ theme }:#{ compress }"
 
 
   grunt.registerTask 'compress', 'compress a generic css', (fileSrc, fileDst) ->
@@ -102,7 +115,10 @@ module.exports = (grunt) ->
     grunt.config 'sass.dist.options.style', 'compressed'
     grunt.task.run ['sass:dist']
 
+
   grunt.registerTask 'default', [
       'clean',
-      'build'
+      'buildThemes',
+      # copy js, font files
+      'copy:bootstrap'
     ]

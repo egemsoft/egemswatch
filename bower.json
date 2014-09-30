@@ -15,7 +15,7 @@
     }
   ],
   "main": [
-    "css/bootstrap.css",
+    "css/egemswatch.steel.css",
     "js/bootstrap.js"
   ],
   "ignore": [

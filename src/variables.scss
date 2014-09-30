@@ -13,10 +13,6 @@ $gray-dark:              #212121 !default;
 $gray-light:             #bbb !default;
 $gray-lighter:           lighten(#000, 93.5%) !default; // #eee
 
-$egem:                  #336E7B !default;
-$egem-dark:             darken($egem, 5%) !default;
-$egem-light:            lighten($egem, 5%) !default;
-
 $brand-primary:         $egem !default;
 $brand-success:         #4CAF50 !default;
 $brand-info:            #3498db !default;
