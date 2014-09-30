@@ -16,14 +16,22 @@ Install via bower:
 ```
 
 Or download zip:
- - [3.2.0](https://github.com/egemsoft/egemswatch/archive/3.2.0.zip)
+ - [master](https://github.com/egemsoft/egemswatch/archive/master.zip)
 
 ##Package Contents
 
 ```
 ├── css
-│   ├── bootstrap.css
-│   └── bootstrap.min.css
+│   ├── egemswatch.curious.css
+│   ├── egemswatch.curious.min.css
+│   ├── egemswatch.light-sea.css
+│   ├── egemswatch.light-sea.min.css
+│   ├── egemswatch.madison.css
+│   ├── egemswatch.madison.min.css
+│   ├── egemswatch.ming.css
+│   ├── egemswatch.ming.min.css
+│   ├── egemswatch.steel.css
+│   └── egemswatch.steel.min.css
 ├── fonts
 │   ├── glyphicons-halflings-regular.eot
 │   ├── glyphicons-halflings-regular.svg
@@ -47,10 +55,10 @@ Node, npm, Bower and Grunt is required for development.
 
 ###Build
 
-Build task generates css with sass sources. Packages css, font and js files on corresponding directories. Requires bootstrap and bootstrap-sass-official (installed with bower).
+Default task runs buildThemes task which generates css files with sass sources. Packages css, font and js files on corresponding directories. Requires bootstrap and bootstrap-sass-official (installed with bower).
 
 ```bash
- $ grunt build
+ $ grunt
 ```
 
 ##Author
