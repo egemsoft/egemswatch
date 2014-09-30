@@ -1,17 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="egemswatchDemo">
   <head>
     <meta charset="utf-8">
     <title>Egemswatch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.css" media="screen">
+    <style>
+      a {
+        cursor: point;
+      }
+    </style>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
       <script src="../bower_components/respond/dest/respond.min.js"></script>
     <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
+    <script type="text/javascript">
+      angular.module('egemswatchDemo', ['ngRoute'])
+        
+        .constant('themes', [
+            'Ming',
+            'Curious',
+            'Light-Sea',
+            'Madison',
+            'Steel'
+          ])
+        
+        .controller('MainCtrl', function($scope, $rootScope, $location, themes) {
+          $scope.themes = themes;
+          function setTheme() {
+            var route = $location.path();
+            if(route == '' || route == '/') {
+              $location.path(themes[0]);
+              $scope.theme = themes[0];
+            }
+            else {
+              theme = $location.path().split('/')[1];
+              theme[0] = theme[0].uppercase;
+              $scope.theme = theme;
+            }
+          }
+          $scope.$on('$locationChangeStart', setTheme);
+        });
+    </script>
   </head>
-  <body>
+  <body ng-controller="MainCtrl">
+    <link rel="stylesheet" href="css/egemswatch.{{theme | lowercase}}.css" media="screen">
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -25,13 +60,20 @@
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Download <span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" id="download">Theme: {{theme}} <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
-                <li><a href="css/bootstrap.min.css">bootstrap.min.css</a></li>
-                <li><a href="css/bootstrap.css">bootstrap.css</a></li>
+                <li ng-repeat="theme in themes"><a href="#/{{theme}}">{{theme}}</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" id="download">Download <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li><a href="css/egemswatch.{{theme | lowercase}}.min.css">egemswatch.{{theme | lowercase}}.min.css</a></li>
+                <li><a href="css/egemswatch.{{theme | lowercase}}.css">egemswatch.{{theme | lowercase}}.css</a></li>
                 <li class="divider"></li>
                 <li><a href="src/variables.scss">variables.scss</a></li>
                 <li><a href="src/bootswatch.scss">bootswatch.scss</a></li>
+                <li><a href="src/egemswatch.{{theme | lowercase}}.scss">egemswatch.{{theme | lowercase}}.scss</a></li>
               </ul>
             </li>
           </ul>
