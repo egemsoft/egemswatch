@@ -13,7 +13,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-less'
   grunt.loadNpmTasks 'grunt-contrib-copy'
-
+  grunt.loadNpmTasks 'grunt-contrib-cssmin'
 
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
@@ -50,15 +50,21 @@ module.exports = (grunt) ->
   
     concat:
       dist:
+        options:
+          banner: '<%= banner %>'
         src: [],
         dest: ''
 
-    sass:
+    less:
       dist:
         options:
-          style: 'nested',
           banner: '<%= meta.banner %>'
         files: {}
+
+    cssmin:
+      dist:
+        options:
+          banner: '<%= meta.banner %>'
 
     copy:
       bootstrap:
@@ -73,7 +79,7 @@ module.exports = (grunt) ->
 
   # Build single theme
   grunt.registerTask 'build', (theme, compress) ->
-    compress = false if !compress?
+    compress = true if !compress?
     files = {}
     dist = {}
     concatSrc = ["<%= appConfig.src %>/less/egemswatch.#{ theme }.less", '<%= appConfig.src %>/less/build.less']
@@ -109,10 +115,8 @@ module.exports = (grunt) ->
     files = {}
     files[fileDst] = fileSrc
     grunt.log.writeln 'compressing file ' + fileSrc
-
-    grunt.config 'less.dist.files', files
-    grunt.config 'less.dist.options.style', 'compressed'
-    grunt.task.run ['less:dist']
+    grunt.config 'cssmin.dist.files', files
+    grunt.task.run ['cssmin:dist']
 
 
   grunt.registerTask 'default', [
