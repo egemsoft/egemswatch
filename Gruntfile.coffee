@@ -11,7 +11,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-watch'
-  grunt.loadNpmTasks 'grunt-contrib-sass'
+  grunt.loadNpmTasks 'grunt-contrib-less'
   grunt.loadNpmTasks 'grunt-contrib-copy'
 
 
@@ -44,7 +44,7 @@ module.exports = (grunt) ->
 
     clean:
       build:
-        src: ['.sass-cache', 'src/build.concat.scss']
+        src: ['src/less/build.concat.less']
       dist:
         src: ['css', 'js', 'fonts']
   
@@ -65,7 +65,7 @@ module.exports = (grunt) ->
         files: [
           # includes files within path
           cwd: 'bower_components/bootstrap/dist'
-          src: ['js/*', 'fonts/*']
+          src: ['js/bootstrap.*', 'fonts/*']
           dest: '<%= appConfig.dist %>'
           expand: true
         ]
@@ -73,13 +73,13 @@ module.exports = (grunt) ->
 
   # Build single theme
   grunt.registerTask 'build', (theme, compress) ->
-    compress = true if !compress?;
+    compress = false if !compress?
     files = {}
     dist = {}
-    concatSrc = ["<%= appConfig.src %>/egemswatch.#{ theme }.scss", '<%= appConfig.src %>/build.scss']
-    concatDest = '<%= appConfig.src %>/build.concat.scss'
-    sassDest = "<%= appConfig.dist %>/css/egemswatch.#{ theme }.css"
-    sassSrc = ['<%= appConfig.src %>/build.concat.scss']
+    concatSrc = ["<%= appConfig.src %>/less/egemswatch.#{ theme }.less", '<%= appConfig.src %>/less/build.less']
+    concatDest = '<%= appConfig.src %>/less/build.concat.less'
+    lessDest = "<%= appConfig.dist %>/css/egemswatch.#{ theme }.css"
+    lessSrc = ['<%= appConfig.src %>/less/build.concat.less']
 
     dist =
       src: concatSrc,
@@ -87,17 +87,16 @@ module.exports = (grunt) ->
 
     grunt.config 'concat.dist', dist
     files = {}
-    files[sassDest] = sassSrc
-    grunt.config 'sass.dist.files', files
-    grunt.config 'sass.dist.options.style', 'nested'
+    files[lessDest] = lessSrc
+    grunt.config 'less.dist.files', files
 
     grunt.task.run [
       'concat'
-      'sass:dist'
+      'less:dist'
       'clean:build'
     ]
 
-    grunt.task.run "compress: #{ sassDest }:<%= appConfig.dist %>/css/egemswatch.#{ theme }.min.css" if compress
+    grunt.task.run "compress: #{ lessDest }:<%= appConfig.dist %>/css/egemswatch.#{ theme }.min.css" if compress
 
 
   # Build all themes registered on appConfig.themes
@@ -111,9 +110,9 @@ module.exports = (grunt) ->
     files[fileDst] = fileSrc
     grunt.log.writeln 'compressing file ' + fileSrc
 
-    grunt.config 'sass.dist.files', files
-    grunt.config 'sass.dist.options.style', 'compressed'
-    grunt.task.run ['sass:dist']
+    grunt.config 'less.dist.files', files
+    grunt.config 'less.dist.options.style', 'compressed'
+    grunt.task.run ['less:dist']
 
 
   grunt.registerTask 'default', [

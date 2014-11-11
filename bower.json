@@ -1,7 +1,7 @@
 {
   "name": "egemswatch",
   "description": "Boostrap theme based on Paper by Bootswatch.",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "author": "İsmail Demirbilek",
   "homepage": "http://egemsoft.github.io/egemswatch",
   "repository": {
@@ -16,7 +16,8 @@
   ],
   "main": [
     "css/egemswatch.steel.css",
-    "js/bootstrap.js"
+    "js/bootstrap.js",
+    "js/ripple.js"
   ],
   "ignore": [
     "**/.*",
@@ -27,7 +28,7 @@
     ".gitignore"
   ],
   "devDependencies": {
-    "bootstrap-sass-official": "~3.2.0+2",
-    "bootstrap": "~3.2.0"
+    "bootstrap": "~3.3.0",
+    "bootswatch": "~3.3.0"
   }
 }
