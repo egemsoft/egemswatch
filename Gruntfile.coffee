@@ -14,6 +14,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-less'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-cssmin'
+  grunt.loadNpmTasks 'grunt-contrib-uglify'
 
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
@@ -51,7 +52,7 @@ module.exports = (grunt) ->
     concat:
       dist:
         options:
-          banner: '<%= banner %>'
+          banner: '<%= meta.banner %>'
         src: [],
         dest: ''
 
@@ -75,7 +76,25 @@ module.exports = (grunt) ->
           dest: '<%= appConfig.dist %>'
           expand: true
         ]
+      scripts:
+        files: [
+          {
+            cwd: '<%= appConfig.src %>/js'
+            src: '*'
+            dest: '<%= appConfig.dist %>/js'
+            expand: true
+          }
+        ]
 
+    uglify:
+      scripts:
+        options:
+          banner: '<%= banner %>'
+          preserveComments: 'some'
+        files: [
+          src: ['<%= appConfig.dist %>/js/ripple.js']
+          dest: '<%= appConfig.dist %>/js/ripple.min.js'
+        ]
 
   # Build single theme
   grunt.registerTask 'build', (theme, compress) ->
@@ -124,4 +143,6 @@ module.exports = (grunt) ->
       'buildThemes',
       # copy js, font files
       'copy:bootstrap'
+      'copy:scripts'
+      'uglify:scripts'
     ]
