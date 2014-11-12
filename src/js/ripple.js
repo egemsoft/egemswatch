@@ -1,4 +1,4 @@
-/**
+/*!
  * Taken from RippleButtons.js
  * https://github.com/holloway/ripple
  * License: GPL & MIT

@@ -15,6 +15,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
+  grunt.loadNpmTasks 'grunt-banner'
 
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
@@ -34,11 +35,10 @@ module.exports = (grunt) ->
 
 
     meta:
-      banner: '/**\n' +
+      banner: '/*!\n' +
         ' * Egemswatch\n' +
         ' * <%= pkg.description %>\n' +
-        ' * @version <%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+        ' * @version <%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
         ' * @link <%= pkg.homepage %>\n' +
         ' * @license <%= pkg.license %>\n' +
         ' */'
@@ -51,9 +51,7 @@ module.exports = (grunt) ->
   
     concat:
       dist:
-        options:
-          banner: '<%= meta.banner %>'
-        src: [],
+        src: []
         dest: ''
 
     less:
@@ -89,12 +87,19 @@ module.exports = (grunt) ->
     uglify:
       scripts:
         options:
-          banner: '<%= banner %>'
           preserveComments: 'some'
         files: [
           src: ['<%= appConfig.dist %>/js/ripple.js']
           dest: '<%= appConfig.dist %>/js/ripple.min.js'
         ]
+
+    usebanner:
+      scripts:
+        options:
+          banner: '<%= meta.banner %>'
+          position: 'top'
+        files:
+          src: ['<%= appConfig.dist %>/js/ripple.js']
 
   # Build single theme
   grunt.registerTask 'build', (theme, compress) ->
@@ -144,5 +149,6 @@ module.exports = (grunt) ->
       # copy js, font files
       'copy:bootstrap'
       'copy:scripts'
+      'usebanner:scripts'
       'uglify:scripts'
     ]
