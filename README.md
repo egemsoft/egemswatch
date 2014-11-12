@@ -1,7 +1,7 @@
 Egemswatch
 ----------
 
-Bootstrap theme based on [Paper](http://bootswatch.com/paper) by Bootswatch. Derived from sass sources in [Bootswatch-sass](https://github.com/log0ymxm/bootswatch-scss).
+Bootstrap theme based on [Paper](http://bootswatch.com/paper) by Bootswatch.
 
 ![egemsoft-logo](http://egemsoft.net/images/logo.png)
 
@@ -39,7 +39,9 @@ Or download zip:
 │   └── glyphicons-halflings-regular.woff
 └── js
     ├── bootstrap.js
-    └── bootstrap.min.js
+    ├── bootstrap.min.js
+    ├── ripple.js
+		└── ripple.min.js
 ```
 
 ##Development
@@ -50,12 +52,11 @@ Node, npm, Bower and Grunt is required for development.
 
 ```bash
  $ npm install
- $ bower install
 ```
 
 ###Build
 
-Default task runs buildThemes task which generates css files with sass sources. Packages css, font and js files on corresponding directories. Requires bootstrap and bootstrap-sass-official (installed with bower).
+Default task runs buildThemes task which generates css files compiling less sources. Packages css, font and js files on corresponding directories. Requires Bootstrap (installed with bower).
 
 ```bash
  $ grunt
@@ -68,4 +69,4 @@ Default task runs buildThemes task which generates css files with sass sources. 
 ##License
 
 - Egemswatch is published under [MIT](http://opensource.org/licenses/MIT) license.
-- [Bootswatch-scss](https://github.com/log0ymxm/bootswatch-scss) is licensed under APACHE-2.0 license.
+- [Bootswatch](https://github.com/thomaspark/bootswatch) is licensed under [MIT](http://opensource.org/licenses/MIT) license.
