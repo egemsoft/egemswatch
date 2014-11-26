@@ -1,7 +1,7 @@
 Egemswatch
 ----------
 
-Bootstrap theme based on [Paper](http://bootswatch.com/paper) by Bootswatch.
+Bootstrap themes based on [Paper](http://bootswatch.com/paper) by Bootswatch.
 
 ![egemsoft-logo](http://egemsoft.net/images/logo.png)
 
@@ -41,7 +41,7 @@ Or download zip:
     ├── bootstrap.js
     ├── bootstrap.min.js
     ├── ripple.js
-		└── ripple.min.js
+    └── ripple.min.js
 ```
 
 ##Development
