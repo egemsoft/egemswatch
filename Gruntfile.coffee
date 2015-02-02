@@ -26,11 +26,12 @@ module.exports = (grunt) ->
       src: 'src'
       dist: '.'
       themes: [
-        'curious',
+        'curious'
         'light-sea'
         'madison'
         'ming'
         'steel'
+        'blue'
       ]
 
 

@@ -1,7 +1,7 @@
 /*!
  * Egemswatch
  * Boostrap theme based on Paper by Bootswatch.
- * @version 3.3.0 - 2014-11-12
+ * @version 3.3.2 - 2015-02-02
  * @link http://egemsoft.github.io/egemswatch
  * @license MIT, http://opensource.org/licenses/MIT
  */
